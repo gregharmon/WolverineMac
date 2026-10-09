@@ -1,0 +1,14 @@
+*.app/
+*.mobileprovision
+*.provisionprofile
+*.p12
+*.p8
+*.pem
+*.key
+*.cer
+*.certSigningRequest
+Apple-*.txt
+*.log
+.DS_Store
+__pycache__/
+work/

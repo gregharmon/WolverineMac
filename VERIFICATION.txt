@@ -1,0 +1,36 @@
+Wolverine Mac — development verification
+
+PASSED
+- Live controller USB descriptors: VID:PID 1532:0a57, configuration 1;
+  interface 0 FF/5D/01; interrupt endpoints 81/01, 32 bytes, interval 1.
+- Normal interface 0 open and standard Xbox 360 capabilities/init request.
+- A genuine 20-byte neutral input report was received during transport capture.
+  This proves USB report delivery, not all physical button/axis mappings.
+- Interface reopen and abort/stop of a pending interrupt read.
+- Xbox 360 packet tests: neutral, signed axis endpoints, all standard button
+  bits, trigger endpoints, null/truncated/status/malformed input rejection.
+- Xbox Series report tests: neutral, each standard button's physical bit,
+  axis conversion/inversion, trigger scaling, eight D-pad directions,
+  opposing/neutral directions, and Guide press/release report payloads.
+- AddressSanitizer and UndefinedBehaviorSanitizer for both focused test programs.
+- Complete app build with -Wall -Wextra -Werror and strict signature verification.
+- Native input-test window visibly reaches Connected.
+- Driver preflight fails clearly before USB access when HID approval is missing.
+- Signing helper validation and refusal of an unapproved local profile before
+  embedding or signing.
+
+REMAINING VALIDATION
+- Approved profile signing and actual virtual HID publication.
+- Apple GameController binding and input inside specific Mac games.
+- Full physical button/stick/trigger mapping and extra hardware assignments.
+- Physical unplug/replug behavior. Discovery/lifecycle code was reviewed;
+  reconnection still needs an actual cable-cycle test.
+- Polling rate/performance. No 8,000 Hz claim is made.
+
+Xbox report generation is source-backed and unit-tested. Virtual-gamepad
+compatibility with Apple GameController, SDL/Steam, or individual games is
+unverified. No universal game-compatibility claim is made.
+
+Reproduce checks with ./Tools/test.sh. Use Test USB input or --capture while
+moving controls for physical input checks. Complete remaining game tests
+with an Apple-approved HID Virtual Device provisioning profile.

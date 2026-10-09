@@ -1,0 +1,34 @@
+OpenJoystickDriver
+https://github.com/xsyetopz/OpenJoystickDriver
+Source commit: d43199315ce713cc8c5f543077cf5da616b61efb
+
+VirtualGamepad.mm adapts the Xbox Series Bluetooth HID descriptor from
+Sources/OpenJoystickDriverKit/Output/HID/Xbox/Bluetooth.swift. The matching
+identity was checked against VirtualDeviceProfile.swift from the same commit.
+The C++ Xbox 360 input encoder and IOKit publisher are local implementations.
+The authoritative 17-byte report layout uses physical Xbox Series Bluetooth
+button masks, hat, axes, and triggers from SDL's official HIDAPI Xbox One parser:
+https://github.com/libsdl-org/SDL/blob/075e1d87596ca5595da181233d72e1cea4942239/src/joystick/hidapi/SDL_hidapi_xboxone.c
+OJD's older contiguous button packer is not used.
+
+MIT License
+
+Copyright (c) 2026 Krystian J.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
